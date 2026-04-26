@@ -1,5 +1,5 @@
 import React from "react";
-import { Mandala } from "./Mandala";
+import { Kolam } from "./SouthIndianMotifs";
 
 export const Footer = () => (
     <footer
@@ -7,7 +7,7 @@ export const Footer = () => (
         data-testid="footer"
     >
         <div className="pointer-events-none absolute -bottom-32 left-1/2 -translate-x-1/2 opacity-15">
-            <Mandala size={520} strokeColor="#f5dfa1" />
+            <Kolam size={520} strokeColor="#f5dfa1" />
         </div>
 
         <div className="relative mx-auto max-w-3xl text-center">

@@ -1,7 +1,7 @@
 import React from "react";
 import { MapPin, Navigation, Clock } from "lucide-react";
 import { Divider } from "./Divider";
-import { Mandala } from "./Mandala";
+import { Kolam } from "./SouthIndianMotifs";
 
 const ADDRESS_FULL =
     "Tharavadu Mane, Byalkere Rd, Yelahanka, Bengaluru, Karnataka 560090, India";
@@ -17,11 +17,11 @@ export const VenueSection = () => (
         className="relative py-24 sm:py-32 px-6 bg-[#fffaf0]"
         data-testid="venue-section"
     >
-        <div className="pointer-events-none absolute -left-32 top-12 opacity-20 spin-slow">
-            <Mandala size={260} />
+        <div className="pointer-events-none absolute -left-32 top-12 opacity-20">
+            <Kolam size={260} />
         </div>
-        <div className="pointer-events-none absolute -right-32 bottom-12 opacity-20 spin-slow [animation-direction:reverse]">
-            <Mandala size={260} />
+        <div className="pointer-events-none absolute -right-32 bottom-12 opacity-20 [transform:scaleX(-1)]">
+            <Kolam size={260} />
         </div>
 
         <div className="relative mx-auto max-w-6xl">

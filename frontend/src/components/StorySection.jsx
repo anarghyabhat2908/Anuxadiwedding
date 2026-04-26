@@ -62,12 +62,8 @@ export const StorySection = () => (
             </h2>
             <Divider symbol="❀" />
             <p className="font-serif-elegant text-xl sm:text-2xl italic leading-relaxed text-[#fff5e0]">
-                Within the carved wooden pillars and quiet courtyards of
-                <span className="text-[#f5dfa1] not-italic font-medium">
-                    {" "}
-                    Tharavadu Mane
-                </span>
-                , beneath garlands of marigold and the warmth of family,
+                Within the carved wooden pillars and quiet courtyards,
+                beneath garlands of marigold and the warmth of family,
                 we will light the lamp of a new beginning.
             </p>
             <p className="mt-8 font-serif-elegant text-base sm:text-lg text-[#f5dfa1]/90">

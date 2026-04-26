@@ -1,6 +1,6 @@
 import React from "react";
 import { Petals } from "./Petals";
-import { Mandala } from "./Mandala";
+import { Kolam, Diya } from "./SouthIndianMotifs";
 
 const COVER =
     "https://customer-assets.emergentagent.com/job_frosty-galois-2/artifacts/j10hirj8_IMG_1210.jpeg";
@@ -23,12 +23,15 @@ export const Hero = () => {
             {/* Floating petals */}
             <Petals count={22} />
 
-            {/* Decorative mandalas */}
-            <div className="pointer-events-none absolute -left-24 top-10 opacity-25 spin-slow">
-                <Mandala size={280} />
+            {/* Decorative South Indian motifs */}
+            <div className="pointer-events-none absolute -left-24 top-10 opacity-25">
+                <Kolam size={280} />
             </div>
-            <div className="pointer-events-none absolute -right-24 bottom-10 opacity-25 spin-slow [animation-direction:reverse]">
-                <Mandala size={320} />
+            <div className="pointer-events-none absolute -right-24 bottom-10 opacity-25 [transform:scaleX(-1)]">
+                <Kolam size={320} />
+            </div>
+            <div className="pointer-events-none absolute left-6 bottom-10 opacity-40 hidden md:block">
+                <Diya size={70} />
             </div>
 
             {/* Content */}
@@ -62,7 +65,7 @@ export const Hero = () => {
                     </div>
 
                     <div
-                        className="fade-up delay-3 mt-10 inline-flex flex-col items-center rounded-md border border-[#b8893a]/40 bg-[#fffaf0]/85 backdrop-blur-sm px-6 sm:px-8 py-5 shadow-[0_10px_40px_-15px_rgba(120,60,20,0.4)]"
+                        className="fade-up delay-3 mt-10 flex w-fit mx-auto lg:mx-0 flex-col items-center rounded-md border border-[#b8893a]/40 bg-[#fffaf0]/85 backdrop-blur-sm px-6 sm:px-8 py-5 shadow-[0_10px_40px_-15px_rgba(120,60,20,0.4)]"
                         data-testid="hero-date-card"
                     >
                         <div className="flex items-center gap-4 sm:gap-6 text-[#3d1d1d]">
@@ -80,7 +83,7 @@ export const Hero = () => {
                                     August
                                 </div>
                                 <div className="font-serif-elegant text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#8a5a1f] mt-1">
-                                    Two Thousand Twenty Six
+                                    2026
                                 </div>
                             </div>
                             <div className="h-12 w-px bg-[#b8893a]/40" />
@@ -98,16 +101,9 @@ export const Hero = () => {
                         </div>
                     </div>
 
-                    <p
-                        className="fade-up delay-4 mt-8 font-serif-elegant italic text-base sm:text-lg text-[#4a2a1f]"
-                        data-testid="hero-venue-tagline"
-                    >
-                        at Tharavadu Mane · Yelahanka, Bengaluru
-                    </p>
-
                     <button
                         onClick={scrollDown}
-                        className="fade-up delay-5 mt-10 group inline-flex flex-col items-center text-[#6b4a1f] hover:text-[#3d1d1d] transition-colors"
+                        className="fade-up delay-5 mt-12 group flex w-fit mx-auto lg:mx-0 flex-col items-center text-[#6b4a1f] hover:text-[#3d1d1d] transition-colors"
                         data-testid="hero-scroll-cta"
                     >
                         <span className="text-[10px] uppercase tracking-[0.4em]">

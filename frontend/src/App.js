@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Hero } from "./components/Hero";
 import { CountdownSection } from "./components/CountdownSection";
 import { StorySection } from "./components/StorySection";
+import { DressCodeSection } from "./components/DressCodeSection";
 import { VenueSection } from "./components/VenueSection";
 import { Footer } from "./components/Footer";
 import { MusicToggle } from "./components/MusicToggle";
@@ -16,6 +17,7 @@ const Home = () => {
             <Hero />
             <CountdownSection />
             <StorySection />
+            <DressCodeSection />
             <VenueSection />
             <Footer />
             <MusicToggle />
