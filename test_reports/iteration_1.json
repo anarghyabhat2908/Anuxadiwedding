@@ -1,0 +1,46 @@
+{
+  "summary": "Frontend-only Playwright e2e of the Anarghya & Adithya wedding site. 7/8 functional checks pass. Hero, Countdown (live ticking), Story heading, Venue address/map/directions, Music toggle (DOM/position/initial label), and Add-to-Calendar (.ics download with correct SUMMARY/DTSTART/LOCATION) all verified. Responsive at 768px and 1280px. ONE issue: horizontal overflow at 375px viewport (page horizontally scrollable by ~137px). Music play->'Music On' state flip could not be verified in headless (audio.play() blocked); per task spec this is acceptable, code path is correct.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "App / Hero (root layout)",
+        "issue": "At 375px viewport, document.documentElement.scrollWidth=512 vs clientWidth=375 — page is horizontally scrollable by ~137px. Confirmed via window.scrollTo(500,0) -> scrollX=137. The Hero's decorative Mandala (`-right-24 bottom-10`) and dashed garland border (`-inset-3`) inside the arch image extend beyond the right edge. Although the <section> has `overflow-hidden`, neither <html>/<body>/<main> nor `.App` set `overflow-x: hidden`, so descendants that are absolutely positioned with negative offsets still expand the document scroll width on small screens. Recommended fix: add `overflow-x: hidden` to body (or to the root .App / <main> wrapper), e.g. in index.css `html, body { overflow-x: hidden; }`. 768px and 1280px are clean.",
+        "selector": "main[data-testid='home-page'] / [data-testid='hero-section']",
+        "priority": "MEDIUM"
+      }
+    ],
+    "integration_issues": [
+      {
+        "flow": "Music toggle click -> play",
+        "issue": "In headless Chromium the click did not flip the label from 'Play Music' to 'Music On'. audio.play() returns a rejected promise (autoplay policy / headless audio sink), the try/catch sets playing=false, so the UI correctly stays at 'Play Music'. Per review_request this is acceptable. No JS error is thrown. Manual real-browser verification recommended for the 'Music On' flip.",
+        "affected_selectors": ["[data-testid='music-toggle-button']"]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Add `overflow-x: hidden` to html/body (or to .App / <main>) to eliminate the 137px horizontal scroll at 375px viewport caused by Hero's decorative Mandala / dashed-garland absolutely-positioned elements."
+  ],
+  "critical_code_review_comments": [
+    "Hero.jsx: decorative absolute elements with `-left-24/-right-24` and `-inset-3` rely solely on the section's `overflow-hidden`. While that should clip visually, root scroll width on mobile still overflows. Consider an extra `overflow-x: hidden` on html/body or wrap `<main>` with `overflow-x-hidden`.",
+    "MusicToggle.jsx: useRef `audioRef` is set but the initial `useState(true)` for `ready` makes the 'Loading…' label effectively unreachable; consider initializing `ready=false` so the loading state is meaningful, or remove it.",
+    "VenueSection.jsx: directions URL & map embed string are duplicated; could share a single ADDRESS constant via encodeURIComponent(ADDRESS_FULL) — minor DRY.",
+    "AddToCalendarButton.jsx: ICS uses fixed DTSTAMP `20260101T000000Z`; per RFC 5545 DTSTAMP should be the creation time (Date.now()). Functionally fine for clients but technically incorrect.",
+    "Countdown.jsx target uses `+05:30` which is correct IST; OK."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "~88%"},
+  "test_credentials": "n/a (no auth)",
+  "seed_data_creation": "none",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Use REACT_APP_BACKEND_URL from /app/frontend/.env (https://frosty-galois-2.preview.emergentagent.com). Re-test the 375px horizontal overflow after main agent adds overflow-x:hidden. Validate via: const a=document.documentElement; a.scrollWidth<=a.clientWidth+1. Music 'Music On' flip cannot be verified in headless — this is expected and acceptable per the task spec; verify only that no JS error is thrown on click and that initial label is 'Play Music'. Add-to-Calendar verified by capturing the download via page.expect_download() and asserting the .ics body contains 'Anarghya & Adithya', 'DTSTART:20260821T051500Z', and 'Tharavadu Mane'.",
+  "rca_of_the_issue": {
+    "bug": "Horizontal scroll at 375px",
+    "reproduction": "1) Open site at 375x800 viewport. 2) Run `document.documentElement.scrollWidth` -> 512 (clientWidth=375). 3) `window.scrollTo(500,0); window.scrollX` -> 137.",
+    "root_cause": "Hero's decorative Mandala (-right-24 bottom-10) and the dashed garland frame (-inset-3) are absolutely positioned with negative offsets. The Hero <section> sets overflow-hidden which clips visually inside it, but the <main>/<body>/<html> ancestors keep overflow-x: visible, so on narrow viewports the document still reports the wider scroll width and becomes horizontally scrollable.",
+    "mitigation": "Add `overflow-x: hidden` to html, body in index.css (or to the .App / <main> wrapper). Verified at 768/1280 there is no overflow."
+  }
+}
