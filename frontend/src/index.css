@@ -11,6 +11,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: #faf6ee;
     color: #2a1a14;
+    overflow-x: hidden;
+}
+
+html {
+    overflow-x: hidden;
 }
 
 @layer base {
