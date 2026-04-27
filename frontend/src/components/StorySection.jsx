@@ -66,9 +66,6 @@ export const StorySection = () => (
                 beneath garlands of marigold and the warmth of family,
                 we will light the lamp of a new beginning.
             </p>
-            <p className="mt-8 font-serif-elegant text-base sm:text-lg text-[#f5dfa1]/90">
-                — with love and blessings, Anarghya &amp; Adithya
-            </p>
         </div>
     </section>
 );

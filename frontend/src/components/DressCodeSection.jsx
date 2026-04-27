@@ -1,17 +1,20 @@
 import React from "react";
 import { Divider } from "./Divider";
-import { Kolam, Diya } from "./SouthIndianMotifs";
+import { Mango, Diya } from "./SouthIndianMotifs";
 
 export const DressCodeSection = () => (
     <section
         className="relative py-24 sm:py-32 px-6 bg-[#faf6ee]"
         data-testid="dress-code-section"
     >
-        <div className="pointer-events-none absolute -left-24 top-12 opacity-20">
-            <Kolam size={260} />
+        <div className="pointer-events-none absolute -left-10 top-16 opacity-50 hidden md:block">
+            <Mango size={64} />
         </div>
-        <div className="pointer-events-none absolute -right-24 bottom-12 opacity-20 [transform:scaleX(-1)]">
-            <Kolam size={260} />
+        <div className="pointer-events-none absolute -right-10 top-16 opacity-50 hidden md:block [transform:scaleX(-1)]">
+            <Mango size={64} />
+        </div>
+        <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-3 opacity-40 hidden md:block">
+            <Diya size={50} />
         </div>
 
         <div className="relative mx-auto max-w-5xl">
@@ -45,8 +48,9 @@ export const DressCodeSection = () => (
                     </h3>
                     <div className="mt-5 h-px w-16 bg-gradient-to-r from-[#b8893a] to-transparent" />
                     <p className="mt-5 font-serif-elegant text-lg sm:text-xl leading-relaxed text-[#3d1d1d]">
-                        Your most stunning sarees! We can&rsquo;t wait to see the
-                        room filled with beautiful drapes and festive energy.
+                        We invite the ladies to celebrate in rich silks or
+                        beautifully draped sarees, adding to the colour and
+                        splendour of the occasion.
                     </p>
                 </article>
 

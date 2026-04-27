@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Music, VolumeX } from "lucide-react";
 
 // YouTube video ID for the wedding song
-const VIDEO_ID = "xyUxkUPe2xg";
+const VIDEO_ID = "KZDzO36P8Wg";
 
 // Inject the YouTube IFrame API script once
 const loadYTApi = () =>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Petals } from "./Petals";
-import { Kolam, Diya } from "./SouthIndianMotifs";
+import { Mango, Kalasham, BananaLeaf, Ganesha, Diya } from "./SouthIndianMotifs";
 
 const COVER =
     "https://customer-assets.emergentagent.com/job_frosty-galois-2/artifacts/j10hirj8_IMG_1210.jpeg";
@@ -24,18 +24,48 @@ export const Hero = () => {
             <Petals count={22} />
 
             {/* Decorative South Indian motifs */}
-            <div className="pointer-events-none absolute -left-24 top-10 opacity-25">
-                <Kolam size={280} />
+            <div className="pointer-events-none absolute -left-16 top-32 opacity-40 hidden md:block">
+                <Kalasham size={130} />
             </div>
-            <div className="pointer-events-none absolute -right-24 bottom-10 opacity-25 [transform:scaleX(-1)]">
-                <Kolam size={320} />
+            <div className="pointer-events-none absolute -right-12 top-40 opacity-40 hidden md:block">
+                <Kalasham size={130} />
             </div>
-            <div className="pointer-events-none absolute left-6 bottom-10 opacity-40 hidden md:block">
-                <Diya size={70} />
+            <div className="pointer-events-none absolute -left-20 -bottom-10 opacity-25 hidden lg:block">
+                <BananaLeaf size={260} />
+            </div>
+            <div className="pointer-events-none absolute -right-20 -bottom-10 opacity-25 hidden lg:block [transform:scaleX(-1)]">
+                <BananaLeaf size={260} />
+            </div>
+            <div className="pointer-events-none absolute left-10 bottom-12 opacity-50 hidden md:block">
+                <Diya size={64} />
+            </div>
+            <div className="pointer-events-none absolute right-10 bottom-12 opacity-50 hidden md:block [transform:scaleX(-1)]">
+                <Diya size={64} />
+            </div>
+
+            {/* Invocation banner — top of page */}
+            <div
+                className="relative z-20 pt-6 sm:pt-10"
+                data-testid="invocation-banner-wrapper"
+            >
+                <div className="mx-auto flex w-fit items-center gap-3 sm:gap-5 px-5 sm:px-8 py-2.5 rounded-full border border-[#b8893a]/40 bg-[#fffaf0]/80 backdrop-blur-sm shadow-[0_6px_20px_-10px_rgba(120,60,20,0.35)] fade-up">
+                    <Ganesha size={42} color="#a47c2a" />
+                    <span
+                        className="font-display italic text-base sm:text-lg lg:text-xl tracking-wide gold-text"
+                        data-testid="invocation-text"
+                    >
+                        Sri Kuladevatha Prasanna
+                    </span>
+                    <Ganesha
+                        size={42}
+                        color="#a47c2a"
+                        className="[transform:scaleX(-1)]"
+                    />
+                </div>
             </div>
 
             {/* Content */}
-            <div className="relative z-10 mx-auto grid min-h-[100svh] max-w-7xl grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-6 px-6 py-20 lg:py-28">
+            <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-6 px-6 pt-12 pb-20 lg:pt-12 lg:pb-24">
                 {/* LEFT — text */}
                 <div className="lg:col-span-7 text-center lg:text-left order-2 lg:order-1">
                     <p
@@ -63,6 +93,17 @@ export const Hero = () => {
                         </span>
                         <span className="h-px w-10 bg-[#b8893a] lg:hidden" />
                     </div>
+
+                    {/* Invitation paragraph */}
+                    <p
+                        className="fade-up delay-2 mt-7 max-w-xl mx-auto lg:mx-0 font-serif-elegant italic text-base sm:text-lg leading-relaxed text-[#4a2a1f]"
+                        data-testid="hero-invitation-text"
+                    >
+                        Together with our families, we invite you to celebrate
+                        this sacred union. Join us as we mark this joyous occasion
+                        with traditional rituals, heartfelt blessings, and
+                        cherished moments.
+                    </p>
 
                     <div
                         className="fade-up delay-3 mt-10 flex w-fit mx-auto lg:mx-0 flex-col items-center rounded-md border border-[#b8893a]/40 bg-[#fffaf0]/85 backdrop-blur-sm px-6 sm:px-8 py-5 shadow-[0_10px_40px_-15px_rgba(120,60,20,0.4)]"
@@ -120,6 +161,15 @@ export const Hero = () => {
                 >
                     {/* Soft halo */}
                     <div className="absolute inset-0 -z-10 m-auto h-[88%] w-[88%] rounded-full bg-[radial-gradient(circle,rgba(255,210,140,0.7)_0%,rgba(255,210,140,0)_65%)] blur-2xl" />
+
+                    {/* Mango/paisley garland strung around the top of the arch */}
+                    <div className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 z-10 hidden sm:flex items-center gap-1 opacity-80">
+                        <Mango size={36} color="#a47c2a" />
+                        <Mango size={28} color="#c79a3e" className="[transform:scaleX(-1)]" />
+                        <Mango size={36} color="#a47c2a" />
+                        <Mango size={28} color="#c79a3e" className="[transform:scaleX(-1)]" />
+                        <Mango size={36} color="#a47c2a" />
+                    </div>
 
                     {/* Decorative arch frame */}
                     <div className="relative mx-auto max-w-md lg:max-w-none">

@@ -1,7 +1,7 @@
 import React from "react";
-import { MapPin, Navigation, Clock } from "lucide-react";
+import { MapPin, Navigation } from "lucide-react";
 import { Divider } from "./Divider";
-import { Kolam } from "./SouthIndianMotifs";
+import { Mango, Kalasham } from "./SouthIndianMotifs";
 
 const ADDRESS_FULL =
     "Tharavadu Mane, Byalkere Rd, Yelahanka, Bengaluru, Karnataka 560090, India";
@@ -17,11 +17,17 @@ export const VenueSection = () => (
         className="relative py-24 sm:py-32 px-6 bg-[#fffaf0]"
         data-testid="venue-section"
     >
-        <div className="pointer-events-none absolute -left-32 top-12 opacity-20">
-            <Kolam size={260} />
+        <div className="pointer-events-none absolute -left-12 top-12 opacity-40 hidden md:block">
+            <Kalasham size={120} />
         </div>
-        <div className="pointer-events-none absolute -right-32 bottom-12 opacity-20 [transform:scaleX(-1)]">
-            <Kolam size={260} />
+        <div className="pointer-events-none absolute -right-12 bottom-12 opacity-40 hidden md:block [transform:scaleX(-1)]">
+            <Kalasham size={120} />
+        </div>
+        <div className="pointer-events-none absolute right-10 top-16 opacity-50 hidden lg:block">
+            <Mango size={56} />
+        </div>
+        <div className="pointer-events-none absolute left-10 bottom-16 opacity-50 hidden lg:block [transform:scaleX(-1)]">
+            <Mango size={56} />
         </div>
 
         <div className="relative mx-auto max-w-6xl">
@@ -75,22 +81,6 @@ export const VenueSection = () => (
                                     Byalkere Rd, Yelahanka <br />
                                     Bengaluru, Karnataka 560090 <br />
                                     India
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="flex gap-4">
-                            <Clock className="h-5 w-5 mt-1 text-[#a47c2a] shrink-0" />
-                            <div>
-                                <p className="text-[10px] uppercase tracking-[0.35em] text-[#8a5a1f]">
-                                    Muhurtham
-                                </p>
-                                <p
-                                    className="mt-2 font-serif-elegant text-lg sm:text-xl text-[#3d1d1d]"
-                                    data-testid="venue-muhurtham"
-                                >
-                                    10:45 AM · Thula Lagna <br />
-                                    Friday, 21 August 2026
                                 </p>
                             </div>
                         </div>
