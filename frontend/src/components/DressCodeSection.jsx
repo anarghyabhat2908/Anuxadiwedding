@@ -43,7 +43,7 @@ export const DressCodeSection = () => (
                 </p>
             </div>
 
-            <div className="mt-14 grid md:grid-cols-2 gap-8 lg:gap-10">
+            <div className="mt-14 grid md:grid-cols-3 gap-6 lg:gap-8">
                 {/* Women */}
                 <article
                     className="relative rounded-md border border-[#b8893a]/30 bg-[#fffaf0] p-8 sm:p-10 shadow-[0_10px_40px_-15px_rgba(120,60,20,0.25)] overflow-hidden"
@@ -90,6 +90,34 @@ export const DressCodeSection = () => (
                         Break out your best kurtas or go full South Indian in a
                         classic veshti! We can&rsquo;t wait to see your dapper
                         traditional looks.
+                    </p>
+                    <div className="mt-6 flex items-center gap-2 opacity-60">
+                        <Mango size={26} color="#a47c2a" />
+                        <Mango size={20} color="#c79a3e" className="[transform:scaleX(-1)]" />
+                        <Mango size={26} color="#a47c2a" />
+                    </div>
+                </article>
+
+                {/* Kids */}
+                <article
+                    className="relative rounded-md border border-[#b8893a]/30 bg-[#fffaf0] p-8 sm:p-10 shadow-[0_10px_40px_-15px_rgba(120,60,20,0.25)] overflow-hidden"
+                    data-testid="dress-code-kids"
+                >
+                    <div className="absolute -right-4 -top-4 opacity-50">
+                        <Diya size={70} color="#c79a3e" />
+                    </div>
+                    <p className="text-[10px] uppercase tracking-[0.4em] text-[#8a5a1f]">
+                        For the Little Ones
+                    </p>
+                    <h3 className="mt-3 font-display text-3xl sm:text-4xl text-[#3d1d1d]">
+                        Tiny <span className="italic gold-text">wedding stars</span>
+                    </h3>
+                    <div className="mt-5 h-px w-16 bg-gradient-to-r from-[#b8893a] to-transparent" />
+                    <p className="mt-5 font-serif-elegant text-lg sm:text-xl leading-relaxed text-[#3d1d1d]">
+                        Our tiny wedding stars can come dressed in their
+                        prettiest traditional outfits! From pattu pavadai,
+                        lehenga cholis and silk frocks to kurta, sherwani and
+                        mundu sets.
                     </p>
                     <div className="mt-6 flex items-center gap-2 opacity-60">
                         <Mango size={26} color="#a47c2a" />
