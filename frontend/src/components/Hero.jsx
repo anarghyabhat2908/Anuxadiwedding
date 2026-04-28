@@ -49,7 +49,7 @@ export const Hero = () => {
                 data-testid="invocation-banner-wrapper"
             >
                 <div className="mx-auto flex w-fit items-center gap-3 sm:gap-5 px-5 sm:px-8 py-2.5 rounded-full border border-[#b8893a]/40 bg-[#fffaf0]/80 backdrop-blur-sm shadow-[0_6px_20px_-10px_rgba(120,60,20,0.35)] fade-up">
-                    <Ganesha size={42} color="#a47c2a" />
+                    <Ganesha size={56} color="#a47c2a" />
                     <span
                         className="font-display italic text-base sm:text-lg lg:text-xl tracking-wide gold-text"
                         data-testid="invocation-text"
@@ -57,7 +57,7 @@ export const Hero = () => {
                         Sri Kuladevatha Prasanna
                     </span>
                     <Ganesha
-                        size={42}
+                        size={56}
                         color="#a47c2a"
                         className="[transform:scaleX(-1)]"
                     />

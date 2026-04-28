@@ -28,6 +28,7 @@ export const MusicToggle = () => {
     const playerRef = useRef(null);
     const containerId = useRef(`yt-player-${Math.random().toString(36).slice(2)}`);
     const [playing, setPlaying] = useState(false);
+    const [muted, setMuted] = useState(true);
     const [ready, setReady] = useState(false);
 
     useEffect(() => {
@@ -39,7 +40,9 @@ export const MusicToggle = () => {
                 height: "0",
                 width: "0",
                 playerVars: {
-                    autoplay: 0,
+                    // Autoplay muted is permitted by all major browsers.
+                    autoplay: 1,
+                    mute: 1,
                     controls: 0,
                     disablekb: 1,
                     loop: 1,
@@ -52,14 +55,15 @@ export const MusicToggle = () => {
                 events: {
                     onReady: (e) => {
                         try {
-                            e.target.setVolume(35);
+                            e.target.setVolume(45);
+                            e.target.mute();
+                            e.target.playVideo();
                         } catch {
-                            // ignore
+                            /* noop */
                         }
                         setReady(true);
                     },
                     onStateChange: (e) => {
-                        // 1 = playing, 2 = paused, 0 = ended
                         if (e.data === 1) setPlaying(true);
                         else if (e.data === 2 || e.data === 0)
                             setPlaying(false);
@@ -72,24 +76,76 @@ export const MusicToggle = () => {
             try {
                 playerRef.current?.destroy?.();
             } catch {
-                // ignore
+                /* noop */
             }
         };
     }, []);
+
+    // Unmute on the very first user interaction anywhere on the page.
+    useEffect(() => {
+        if (!ready) return;
+        let unmounted = false;
+
+        const unmuteOnFirstInteraction = () => {
+            const p = playerRef.current;
+            if (!p || unmounted) return;
+            try {
+                p.unMute?.();
+                p.setVolume?.(45);
+                p.playVideo?.();
+                setMuted(false);
+            } catch {
+                /* noop */
+            }
+            window.removeEventListener("pointerdown", unmuteOnFirstInteraction);
+            window.removeEventListener("keydown", unmuteOnFirstInteraction);
+            window.removeEventListener("touchstart", unmuteOnFirstInteraction);
+            window.removeEventListener("scroll", unmuteOnFirstInteraction);
+        };
+
+        window.addEventListener("pointerdown", unmuteOnFirstInteraction, {
+            once: true,
+        });
+        window.addEventListener("keydown", unmuteOnFirstInteraction, {
+            once: true,
+        });
+        window.addEventListener("touchstart", unmuteOnFirstInteraction, {
+            once: true,
+        });
+        window.addEventListener("scroll", unmuteOnFirstInteraction, {
+            once: true,
+        });
+
+        return () => {
+            unmounted = true;
+            window.removeEventListener("pointerdown", unmuteOnFirstInteraction);
+            window.removeEventListener("keydown", unmuteOnFirstInteraction);
+            window.removeEventListener("touchstart", unmuteOnFirstInteraction);
+            window.removeEventListener("scroll", unmuteOnFirstInteraction);
+        };
+    }, [ready]);
 
     const toggle = () => {
         const p = playerRef.current;
         if (!p) return;
         try {
-            if (playing) {
+            if (playing && !muted) {
                 p.pauseVideo?.();
+            } else if (muted) {
+                p.unMute?.();
+                p.setVolume?.(45);
+                p.playVideo?.();
+                setMuted(false);
             } else {
                 p.playVideo?.();
             }
         } catch {
-            // ignore
+            /* noop */
         }
     };
+
+    const audible = playing && !muted;
+    const label = audible ? "Music On" : ready ? "Tap for Sound" : "Loading…";
 
     return (
         <>
@@ -112,26 +168,26 @@ export const MusicToggle = () => {
             <button
                 type="button"
                 onClick={toggle}
-                aria-label={playing ? "Pause music" : "Play music"}
+                aria-label={audible ? "Pause music" : "Play music"}
                 data-testid="music-toggle-button"
                 className="fixed bottom-6 right-6 z-50 group flex items-center gap-2 rounded-full border border-[#b8893a]/40 bg-[#fffaf0]/90 backdrop-blur-md px-4 py-3 shadow-[0_10px_30px_-10px_rgba(120,60,20,0.4)] hover:bg-[#fffaf0] transition-all"
             >
                 <span
                     className={`relative inline-flex h-2.5 w-2.5 rounded-full ${
-                        playing ? "bg-[#a47c2a]" : "bg-[#b8893a]/40"
+                        audible ? "bg-[#a47c2a]" : "bg-[#b8893a]/40"
                     }`}
                 >
-                    {playing && (
+                    {audible && (
                         <span className="absolute inset-0 rounded-full bg-[#a47c2a] animate-ping opacity-75" />
                     )}
                 </span>
-                {playing ? (
+                {audible ? (
                     <Music className="h-4 w-4 text-[#3d1d1d]" />
                 ) : (
                     <VolumeX className="h-4 w-4 text-[#3d1d1d]" />
                 )}
                 <span className="font-serif-elegant text-xs uppercase tracking-[0.25em] text-[#3d1d1d] hidden sm:inline">
-                    {playing ? "Music On" : ready ? "Play Music" : "Loading…"}
+                    {label}
                 </span>
             </button>
         </>

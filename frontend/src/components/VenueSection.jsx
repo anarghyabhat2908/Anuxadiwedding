@@ -2,6 +2,8 @@ import React from "react";
 import { MapPin, Navigation } from "lucide-react";
 import { Divider } from "./Divider";
 import { Mango, Kalasham } from "./SouthIndianMotifs";
+import { OrnamentStrip } from "./OrnamentStrip";
+import { PaisleyBackdrop } from "./PaisleyBackdrop";
 
 const ADDRESS_FULL =
     "Tharavadu Mane, Byalkere Rd, Yelahanka, Bengaluru, Karnataka 560090, India";
@@ -14,9 +16,10 @@ const MAP_EMBED = `https://www.google.com/maps?q=${encodeURIComponent(
 
 export const VenueSection = () => (
     <section
-        className="relative py-24 sm:py-32 px-6 bg-[#fffaf0]"
+        className="relative py-24 sm:py-32 px-6 bg-[#fffaf0] overflow-hidden"
         data-testid="venue-section"
     >
+        <PaisleyBackdrop opacity={0.4} />
         <div className="pointer-events-none absolute -left-12 top-12 opacity-40 hidden md:block">
             <Kalasham size={120} />
         </div>
@@ -31,7 +34,8 @@ export const VenueSection = () => (
         </div>
 
         <div className="relative mx-auto max-w-6xl">
-            <div className="text-center">
+            <OrnamentStrip count={7} />
+            <div className="mt-10 text-center">
                 <p className="text-[10px] uppercase tracking-[0.5em] text-[#8a5a1f]">
                     The Venue
                 </p>
@@ -101,6 +105,7 @@ export const VenueSection = () => (
                     </a>
                 </div>
             </div>
+            <OrnamentStrip count={7} className="mt-16" />
         </div>
     </section>
 );
