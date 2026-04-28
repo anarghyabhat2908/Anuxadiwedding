@@ -48,12 +48,12 @@ export const Hero = () => {
                 className="relative z-20 pt-6 sm:pt-10"
                 data-testid="invocation-banner-wrapper"
             >
-                <div className="mx-auto flex w-fit items-center gap-3 sm:gap-5 px-6 sm:px-10 py-3 rounded-full border border-[#b8893a]/40 bg-[#fffaf0]/80 backdrop-blur-sm shadow-[0_6px_20px_-10px_rgba(120,60,20,0.35)] fade-up">
+                <div className="mx-auto flex w-fit items-center gap-3 sm:gap-5 px-6 sm:px-10 py-3 rounded-full border border-[#b8893a]/40 bg-[#3d1d1d] shadow-[0_6px_20px_-10px_rgba(0,0,0,0.5)] fade-up">
                     <img
-                        src="https://customer-assets.emergentagent.com/job_frosty-galois-2/artifacts/3o3ftn5l_IMG_1787.jpeg"
+                        src="/ganesha.png"
                         alt="Ganesha"
                         aria-hidden="true"
-                        className="h-14 w-14 sm:h-16 sm:w-16 object-contain [mix-blend-mode:multiply]"
+                        className="h-14 w-14 sm:h-16 sm:w-16 object-contain"
                         data-testid="ganesha-icon-left"
                     />
                     <span
@@ -63,10 +63,10 @@ export const Hero = () => {
                         Sri Kuladevatha Prasanna
                     </span>
                     <img
-                        src="https://customer-assets.emergentagent.com/job_frosty-galois-2/artifacts/3o3ftn5l_IMG_1787.jpeg"
+                        src="/ganesha.png"
                         alt="Ganesha"
                         aria-hidden="true"
-                        className="h-14 w-14 sm:h-16 sm:w-16 object-contain [mix-blend-mode:multiply] [transform:scaleX(-1)]"
+                        className="h-14 w-14 sm:h-16 sm:w-16 object-contain [transform:scaleX(-1)]"
                         data-testid="ganesha-icon-right"
                     />
                 </div>

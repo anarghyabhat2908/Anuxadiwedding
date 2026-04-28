@@ -110,7 +110,7 @@ export const DressCodeSection = () => (
                         For the Little Ones
                     </p>
                     <h3 className="mt-3 font-display text-3xl sm:text-4xl text-[#3d1d1d]">
-                        Tiny <span className="italic gold-text">wedding stars</span>
+                        Colourful <span className="italic gold-text">Threads</span>
                     </h3>
                     <div className="mt-5 h-px w-16 bg-gradient-to-r from-[#b8893a] to-transparent" />
                     <p className="mt-5 font-serif-elegant text-lg sm:text-xl leading-relaxed text-[#3d1d1d]">
