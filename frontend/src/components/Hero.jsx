@@ -1,6 +1,6 @@
 import React from "react";
 import { Petals } from "./Petals";
-import { Mango, Kalasham, BananaLeaf, Ganesha, Diya } from "./SouthIndianMotifs";
+import { Mango, Kalasham, BananaLeaf, Diya } from "./SouthIndianMotifs";
 
 const COVER =
     "https://customer-assets.emergentagent.com/job_frosty-galois-2/artifacts/j10hirj8_IMG_1210.jpeg";
@@ -48,19 +48,25 @@ export const Hero = () => {
                 className="relative z-20 pt-6 sm:pt-10"
                 data-testid="invocation-banner-wrapper"
             >
-                <div className="mx-auto flex w-fit items-center gap-3 sm:gap-5 px-5 sm:px-8 py-2.5 rounded-full border border-[#b8893a]/40 bg-[#fffaf0]/80 backdrop-blur-sm shadow-[0_6px_20px_-10px_rgba(120,60,20,0.35)] fade-up">
-                    <Ganesha size={56} color="#a47c2a" />
+                <div className="mx-auto flex w-fit items-center gap-3 sm:gap-5 px-6 sm:px-10 py-3 rounded-full border border-[#b8893a]/40 bg-[#fffaf0]/80 backdrop-blur-sm shadow-[0_6px_20px_-10px_rgba(120,60,20,0.35)] fade-up">
+                    <span
+                        aria-hidden="true"
+                        className="font-display text-3xl sm:text-4xl gold-text leading-none"
+                    >
+                        ॐ
+                    </span>
                     <span
                         className="font-display italic text-base sm:text-lg lg:text-xl tracking-wide gold-text"
                         data-testid="invocation-text"
                     >
                         Sri Kuladevatha Prasanna
                     </span>
-                    <Ganesha
-                        size={56}
-                        color="#a47c2a"
-                        className="[transform:scaleX(-1)]"
-                    />
+                    <span
+                        aria-hidden="true"
+                        className="font-display text-3xl sm:text-4xl gold-text leading-none"
+                    >
+                        ॐ
+                    </span>
                 </div>
             </div>
 
