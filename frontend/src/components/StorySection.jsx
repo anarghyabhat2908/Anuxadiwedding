@@ -62,7 +62,7 @@ export const StorySection = () => (
             </h2>
             <Divider symbol="❀" />
             <p className="font-serif-elegant text-xl sm:text-2xl italic leading-relaxed text-[#fff5e0]">
-                Within the carved wooden pillars and quiet courtyards,
+                Within the rustic walls and quiet courtyards,
                 beneath garlands of marigold and the warmth of family,
                 we will light the lamp of a new beginning.
             </p>
