@@ -127,7 +127,6 @@ export const DressCodeSection = () => (
                 </article>
             </div>
 
-            <OrnamentStrip count={7} className="mt-16" />
         </div>
     </section>
 );
