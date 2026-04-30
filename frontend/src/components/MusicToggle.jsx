@@ -51,7 +51,7 @@ export const MusicToggle = () => {
                     rel: 0,
                     iv_load_policy: 3,
                     start: 18, // Skip first 18 seconds
-                    end: 210, // Stop at 3:30 (18 + 192 = 210 seconds) for 3:12 of playback
+                    end: 192, // Stop at 3:12 (192 seconds)
                 },
                 events: {
                     onReady: (e) => {
