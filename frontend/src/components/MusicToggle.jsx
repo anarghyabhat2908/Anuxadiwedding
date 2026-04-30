@@ -50,8 +50,8 @@ export const MusicToggle = () => {
                     playsinline: 1,
                     rel: 0,
                     iv_load_policy: 3,
-                    start: 4, // Skip first 4 seconds
-                    end: 196, // Stop at 3:16 (4 + 192 = 196 seconds) for 3:12 of playback
+                    start: 18, // Skip first 18 seconds
+                    end: 210, // Stop at 3:30 (18 + 192 = 210 seconds) for 3:12 of playback
                 },
                 events: {
                     onReady: (e) => {
@@ -67,10 +67,10 @@ export const MusicToggle = () => {
                     onStateChange: (e) => {
                         if (e.data === 1) setPlaying(true);
                         else if (e.data === 2) setPlaying(false);
-                        // When video ends (state 0), restart from 4 seconds for looping
+                        // When video ends (state 0), restart from 18 seconds for looping
                         else if (e.data === 0) {
                             try {
-                                e.target.seekTo(4);
+                                e.target.seekTo(18);
                                 e.target.playVideo();
                             } catch {
                                 /* noop */
