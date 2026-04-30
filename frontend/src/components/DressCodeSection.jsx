@@ -1,7 +1,6 @@
 import React from "react";
 import { Divider } from "./Divider";
 import { Mango, Diya, Kalasham } from "./SouthIndianMotifs";
-import { OrnamentStrip } from "./OrnamentStrip";
 import { PaisleyBackdrop } from "./PaisleyBackdrop";
 
 export const DressCodeSection = () => (
@@ -28,8 +27,6 @@ export const DressCodeSection = () => (
         </div>
 
         <div className="relative mx-auto max-w-5xl">
-            <OrnamentStrip count={7} />
-
             <div className="mt-10 text-center">
                 <p className="text-[10px] uppercase tracking-[0.5em] text-[#8a5a1f]">
                     What to Wear
