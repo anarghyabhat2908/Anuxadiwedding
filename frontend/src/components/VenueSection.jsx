@@ -34,7 +34,6 @@ export const VenueSection = () => (
         </div>
 
         <div className="relative mx-auto max-w-6xl">
-            <OrnamentStrip count={7} />
             <div className="mt-10 text-center">
                 <p className="text-[10px] uppercase tracking-[0.5em] text-[#8a5a1f]">
                     The Venue
