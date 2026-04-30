@@ -1,12 +1,11 @@
 import React from "react";
 import { Divider } from "./Divider";
 import { Mango, Diya, Kalasham } from "./SouthIndianMotifs";
-import { OrnamentStrip } from "./OrnamentStrip";
 import { PaisleyBackdrop } from "./PaisleyBackdrop";
 
 export const DressCodeSection = () => (
     <section
-        className="relative py-24 sm:py-32 px-6 bg-[#fffaf0] overflow-hidden"
+        className="relative pt-24 sm:pt-32 pb-8 sm:pb-12 px-6 bg-[#fffaf0] overflow-hidden"
         data-testid="dress-code-section"
     >
         <PaisleyBackdrop opacity={0.45} />
@@ -28,8 +27,6 @@ export const DressCodeSection = () => (
         </div>
 
         <div className="relative mx-auto max-w-5xl">
-            <OrnamentStrip count={7} />
-
             <div className="mt-10 text-center">
                 <p className="text-[10px] uppercase tracking-[0.5em] text-[#8a5a1f]">
                     What to Wear
@@ -127,7 +124,6 @@ export const DressCodeSection = () => (
                 </article>
             </div>
 
-            <OrnamentStrip count={7} className="mt-16" />
         </div>
     </section>
 );
