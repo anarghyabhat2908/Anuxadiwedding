@@ -16,7 +16,7 @@ const MAP_EMBED = `https://www.google.com/maps?q=${encodeURIComponent(
 
 export const VenueSection = () => (
     <section
-        className="relative py-24 sm:py-32 px-6 bg-[#fffaf0] overflow-hidden"
+        className="relative pt-8 sm:pt-12 pb-24 sm:pb-32 px-6 bg-[#fffaf0] overflow-hidden"
         data-testid="venue-section"
     >
         <PaisleyBackdrop opacity={0.4} />

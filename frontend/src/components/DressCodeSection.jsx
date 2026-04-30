@@ -6,7 +6,7 @@ import { PaisleyBackdrop } from "./PaisleyBackdrop";
 
 export const DressCodeSection = () => (
     <section
-        className="relative py-24 sm:py-32 px-6 bg-[#fffaf0] overflow-hidden"
+        className="relative pt-24 sm:pt-32 pb-8 sm:pb-12 px-6 bg-[#fffaf0] overflow-hidden"
         data-testid="dress-code-section"
     >
         <PaisleyBackdrop opacity={0.45} />
