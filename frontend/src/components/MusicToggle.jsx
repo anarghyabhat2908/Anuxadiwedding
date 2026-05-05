@@ -24,12 +24,13 @@ const loadYTApi = () =>
         window.onYouTubeIframeAPIReady = () => resolve(window.YT);
     });
 
-export const MusicToggle = () => {
+export const MusicToggle = ({ autoUnmute = false }) => {
     const playerRef = useRef(null);
     const containerId = useRef(`yt-player-${Math.random().toString(36).slice(2)}`);
     const [playing, setPlaying] = useState(false);
     const [muted, setMuted] = useState(true);
     const [ready, setReady] = useState(false);
+    const hasAutoUnmuted = useRef(false);
 
     useEffect(() => {
         let destroyed = false;
@@ -90,49 +91,23 @@ export const MusicToggle = () => {
         };
     }, []);
 
-    // Unmute on the very first user interaction anywhere on the page.
+    // Auto-unmute when user clicks "Open Invitation"
     useEffect(() => {
-        if (!ready) return;
-        let unmounted = false;
-
-        const unmuteOnFirstInteraction = () => {
-            const p = playerRef.current;
-            if (!p || unmounted) return;
-            try {
-                p.unMute?.();
-                p.setVolume?.(45);
-                p.playVideo?.();
-                setMuted(false);
-            } catch {
-                /* noop */
-            }
-            window.removeEventListener("pointerdown", unmuteOnFirstInteraction);
-            window.removeEventListener("keydown", unmuteOnFirstInteraction);
-            window.removeEventListener("touchstart", unmuteOnFirstInteraction);
-            window.removeEventListener("scroll", unmuteOnFirstInteraction);
-        };
-
-        window.addEventListener("pointerdown", unmuteOnFirstInteraction, {
-            once: true,
-        });
-        window.addEventListener("keydown", unmuteOnFirstInteraction, {
-            once: true,
-        });
-        window.addEventListener("touchstart", unmuteOnFirstInteraction, {
-            once: true,
-        });
-        window.addEventListener("scroll", unmuteOnFirstInteraction, {
-            once: true,
-        });
-
-        return () => {
-            unmounted = true;
-            window.removeEventListener("pointerdown", unmuteOnFirstInteraction);
-            window.removeEventListener("keydown", unmuteOnFirstInteraction);
-            window.removeEventListener("touchstart", unmuteOnFirstInteraction);
-            window.removeEventListener("scroll", unmuteOnFirstInteraction);
-        };
-    }, [ready]);
+        if (!ready || !autoUnmute || hasAutoUnmuted.current) return;
+        
+        const p = playerRef.current;
+        if (!p) return;
+        
+        try {
+            p.unMute?.();
+            p.setVolume?.(45);
+            p.playVideo?.();
+            setMuted(false);
+            hasAutoUnmuted.current = true;
+        } catch {
+            /* noop */
+        }
+    }, [ready, autoUnmute]);
 
     const toggle = () => {
         const p = playerRef.current;
